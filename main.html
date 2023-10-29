@@ -1,0 +1,24 @@
+<div style="width: 400px;height: 400px;">
+	<canvas id="canvas"></canvas>
+</div>
+
+<script src="qrcode.js"></script>
+<script>
+	const target = document.getElementById("canvas");
+	QRCode.toDataURL('demo.png').then((url) => {
+		console.log(url)
+	})
+	QRCode.toString(
+		'dmeo',
+		{
+			type: 'terminal',
+			small: true,
+		},
+		function (err, url) {
+			console.log(url);
+		},
+	);
+	// QRCode.toCanvas(
+	// 	target, "sample text"
+	// );
+</script>
