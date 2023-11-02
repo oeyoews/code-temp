@@ -1,24 +1,39 @@
-<div style="width: 400px;height: 400px;">
-	<canvas id="canvas"></canvas>
-</div>
+<!DOCTYPE html>
+<html>
 
-<script src="qrcode.js"></script>
-<script>
-	const target = document.getElementById("canvas");
-	QRCode.toDataURL('demo.png').then((url) => {
-		console.log(url)
-	})
-	QRCode.toString(
-		'dmeo',
-		{
-			type: 'terminal',
-			small: true,
-		},
-		function (err, url) {
-			console.log(url);
-		},
-	);
-	// QRCode.toCanvas(
-	// 	target, "sample text"
-	// );
-</script>
+<head>
+  <meta charset="UTF-8">
+  <title>Generate BlurHash</title>
+  <script src="https://unpkg.com/blurhash/dist/blurhash.min.js"></script>
+</head>
+
+<body>
+  <img id="source-image" crossorigin=""
+    src="https://plus.unsplash.com/premium_photo-1690481529194-6087914e096e?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
+    alt="Original Image">
+
+  <script>
+        // 获取图像元素
+        const image = document.getElementById('source-image');
+
+        // 创建一个新的Canvas元素
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // 将图像绘制到Canvas上
+        canvas.width = image.width;
+        canvas.height = image.height;
+        ctx.drawImage(image, 0, 0);
+
+        // 获取绘制后的图像数据
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = new Uint8Array(imageData.data.buffer);
+
+        // 生成BlurHash
+        const blurhash = blurhash.encode(pixels, canvas.width, canvas.height, 4, 4);
+
+        console.log(blurhash);
+      </script>
+</body>
+
+</html>
