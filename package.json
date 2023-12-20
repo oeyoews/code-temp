@@ -10,6 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fast-blurhash": "^1.1.2"
+    "axios": "^1.6.0",
+    "blurhash": "^2.0.5",
+    "fast-blurhash": "^1.1.2",
+    "got": "^13.0.0",
+    "js-sha256": "^0.10.1",
+    "lqip": "^2.1.0",
+    "lqip-modern": "^2.0.0",
+    "node-fetch": "^3.3.2",
+    "uuid": "^9.0.1"
   }
 }

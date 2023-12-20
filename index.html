@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resizable Sidebar</title>
+	<style>
+		body,
+		html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#sidebar {
+			width: 200px;
+			height: 100%;
+			background-color: #f2f2f2;
+			float: left;
+		}
+
+		#resizer {
+			width: 5px;
+			height: 100%;
+			float: left;
+			cursor: ew-resize;
+			background-color: #ccc;
+		}
+
+		#main-content {
+			height: 100%;
+			margin-left: 5px;
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="sidebar">
+		Sidebar content
+	</div>
+	<div id="resizer"></div>
+	<div id="main-content">
+		Main content
+	</div>
+	<script>
+		const resizer = document.getElementById('resizer');
+		const sidebar = document.getElementById('sidebar');
+		let isResizing = false;
+
+		resizer.addEventListener('mousedown', function (e) {
+			isResizing = true;
+			document.addEventListener('mousemove', resize);
+			document.addEventListener('mouseup', stopResize);
+		});
+
+		function resize(e) {
+			if (isResizing) {
+				requestAnimationFrame(() => {
+					sidebar.style.width = (e.clientX - sidebar.getBoundingClientRect().left) + 'px';
+				})
+			}
+		}
+
+		function stopResize() {
+			isResizing = false;
+			document.removeEventListener('mousemove', resize);
+		}
+	</script>
+</body>
+
+</html>

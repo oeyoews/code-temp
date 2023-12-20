@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>Generate BlurHash</title>
-  <script src="https://unpkg.com/blurhash/dist/blurhash.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .artplayer-app {
+      width: 400px;
+      height: 300px;
+    }
+  </style>
 </head>
 
 <body>
-  <img id="source-image" crossorigin=""
-    src="https://plus.unsplash.com/premium_photo-1690481529194-6087914e096e?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
-    alt="Original Image">
+  <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+  <div id="artplayer-app" class="artplayer-app"></div>
 
-  <script>
-        // 获取图像元素
-        const image = document.getElementById('source-image');
-
-        // 创建一个新的Canvas元素
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        // 将图像绘制到Canvas上
-        canvas.width = image.width;
-        canvas.height = image.height;
-        ctx.drawImage(image, 0, 0);
-
-        // 获取绘制后的图像数据
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const pixels = new Uint8Array(imageData.data.buffer);
-
-        // 生成BlurHash
-        const blurhash = blurhash.encode(pixels, canvas.width, canvas.height, 4, 4);
-
-        console.log(blurhash);
-      </script>
+  <script type="module">
+    new Artplayer({
+      container: '#artplayer-app',
+      url: '//vodkgeyttp8.vod.126.net/cloudmusic/420c/core/23a2/d80f989517a4ea4d336a94c53893311b.mp4?wsSecret=88f3050e10c1588e072dae86b04e8413&wsTime=1700315561',
+      id: '0',
+      mute: true,
+      autoplay: true,
+      autoSize: true,
+      autoMini: true,
+      playbackRate: true,
+      aspectRatio: true,
+      screenshot: true,
+      setting: true,
+      hotkey: true,
+      pip: true,
+      mutex: true, // 无法生效
+      fullscreen: true,
+      fullscreenWeb: true,
+      loop: true,
+      subtitleOffset: true,
+      playsInline: true,
+      lock: true,
+      fastForward: true,
+      autoPlayback: true, // 保存在了localstorage
+      autoOrientation: true,
+      airplay: true,
+    });
+  </script>
 </body>
 
 </html>
