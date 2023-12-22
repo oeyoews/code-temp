@@ -29,6 +29,9 @@ dependencies:
   node-fetch:
     specifier: ^3.3.2
     version: 3.3.2
+  skill-badges:
+    specifier: ^1.2.0
+    version: 1.2.0
   uuid:
     specifier: ^9.0.1
     version: 9.0.1
@@ -1210,6 +1213,10 @@ packages:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
     dependencies:
       is-arrayish: 0.3.2
+    dev: false
+
+  /skill-badges@1.2.0:
+    resolution: {integrity: sha512-pNjNswpMZD84n/1+XzTSb4N4Y1OVicxFftoII+/hlnabJSo42ixZ/1WZ3Yg1aO1A/MNnlaS4LO8a31uYFpswdg==}
     dev: false
 
   /sshpk@1.18.0:

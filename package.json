@@ -1,5 +1,6 @@
 {
-  "name": "code temp",
+  "name": "codetemp",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,6 +19,7 @@
     "lqip": "^2.1.0",
     "lqip-modern": "^2.0.0",
     "node-fetch": "^3.3.2",
+    "skill-badges": "^1.2.1",
     "uuid": "^9.0.1"
   }
 }
