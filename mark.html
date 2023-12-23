@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>JS-Mark Example</title>
+</head>
+
+<body id="">
+	<h1>JS-Mark Example</h1>
+	<div id="js-mark">
+		The quick brown fox jumps over the lazy dog
+		The quick brown fox jumps over the lazy dog
+		The quick brown fox jumps over the lazy dog
+		The quick brown fox jumps over the lazy dog
+		The quick brown fox jumps over the lazy dog
+	</div>
+
+	<script src="./js-mark.min.js"></script>
+	<script>
+		const target = document.querySelector('#js-mark')
+		const jsMark = new JsMark({
+			el: target, options: {
+				isCover: true, beautify: true
+			}
+		})
+
+		jsMark.onSelected = function (res) {
+			let { uid, offsetTop } = jsMark.repaintRange({
+				uuid: res.storeRenderOther.uid,
+				textNodes: res.textNodes,
+				class: res.storeRenderOther.className
+			});
+			cb.onSelected &&
+				cb.onSelected({
+					uid,
+					offsetTop,
+					desc: res.storeRenderOther.desc,
+					hasStoreRender: res.hasStoreRender,
+				});
+
+			if (!res.hasStoreRender) {
+				setLocal({
+					offset: res.offset,
+					text: res.text,
+					uid,
+					desc: "",
+				});
+			}
+		};
+
+
+	</script>
+</body>
+
+</html>
