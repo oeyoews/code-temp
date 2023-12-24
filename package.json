@@ -19,6 +19,7 @@
     "lqip": "^2.1.0",
     "lqip-modern": "^2.0.0",
     "node-fetch": "^3.3.2",
+    "randomstring-plus": "^1.2.0",
     "skill-badges": "^1.2.1",
     "uuid": "^9.0.1"
   },

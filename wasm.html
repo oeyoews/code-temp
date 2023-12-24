@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WASM Module Example</title>
+</head>
+
+<body>
+	<h1>WASM Module Example</h1>
+
+	<script>
+		// WebAssembly code in a file named "module.wasm"
+		const wasmCode = new Uint8Array([ /* Your actual WASM bytecode here */]);
+
+		// Create a WebAssembly module
+		WebAssembly.instantiate(wasmCode)
+			.then(result => {
+				const moduleInstance = result.instance;
+
+				// Call functions from the WebAssembly module
+				const result = moduleInstance.exports.yourFunction(); // Replace "yourFunction" with the actual function name
+
+				// Use the result as needed
+				console.log('Result from WebAssembly:', result);
+			})
+			.catch(error => {
+				console.error('Error loading WebAssembly module:', error);
+			});
+	</script>
+</body>
+
+</html>

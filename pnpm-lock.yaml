@@ -29,6 +29,9 @@ dependencies:
   node-fetch:
     specifier: ^3.3.2
     version: 3.3.2
+  randomstring-plus:
+    specifier: ^1.2.0
+    version: 1.2.0
   skill-badges:
     specifier: ^1.2.1
     version: 1.2.2
@@ -1138,6 +1141,10 @@ packages:
   /quick-lru@5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
+    dev: false
+
+  /randomstring-plus@1.2.0:
+    resolution: {integrity: sha512-db0WG7iZML4oBr+IF5Buvu3zEQL5QoagWLiAvseWG281dq/thgdHR5smTVOue169odBrpff27h0I25Vpuur+kg==}
     dev: false
 
   /rc@1.2.8:
