@@ -7,10 +7,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@kreisler/js-google-translate-free": "^2.1.0",
     "axios": "^1.6.0",
     "blurhash": "^2.0.5",
     "fast-blurhash": "^1.1.2",
@@ -20,7 +22,8 @@
     "lqip-modern": "^2.0.0",
     "node-fetch": "^3.3.2",
     "randomstring-plus": "^1.2.0",
-    "skill-badges": "^1.2.1",
+    "skill-badges": "^1.4.0",
+    "translate": "^2.0.2",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

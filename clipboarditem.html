@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ClipboardItem 示例</title>
+</head>
+
+<body>
+
+	<img src="./public/test.png" alt="示例图像">
+	<button onclick="copyImageToClipboard()">复制图像到剪贴板</button>
+
+	<script>
+		function copyImageToClipboard() {
+			// 替换为您的图像路径
+			const imagePath = 'example-image.jpg';
+
+			// 获取图像数据
+			fetch(imagePath)
+				.then(response => response.blob())
+				.then(imageBlob => {
+					// 创建包含图像的剪贴板项
+					const clipboardItem = new ClipboardItem({ "image/png": imageBlob });
+
+					// 将剪贴板项添加到剪贴板
+					navigator.clipboard.write([clipboardItem])
+						.then(() => {
+							console.log('已成功复制图像到剪贴板！');
+						})
+						.catch((err) => {
+							console.error('复制图像到剪贴板时出错：', err);
+						});
+				})
+				.catch(err => {
+					console.error('获取图像数据时出错：', err);
+				});
+		}
+	</script>
+
+</body>
+
+</html>
