@@ -9,6 +9,9 @@
   },
   "type": "module",
   "keywords": [],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -27,6 +30,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.4.1"
+    "@biomejs/biome": "^1.4.1",
+    "tw5-plugins-types": "^1.0.1"
   }
 }

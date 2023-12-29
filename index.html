@@ -4,70 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Resizable Sidebar</title>
-	<style>
-		body,
-		html {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		}
-
-		#sidebar {
-			width: 200px;
-			height: 100%;
-			background-color: #f2f2f2;
-			float: left;
-		}
-
-		#resizer {
-			width: 5px;
-			height: 100%;
-			float: left;
-			cursor: ew-resize;
-			background-color: #ccc;
-		}
-
-		#main-content {
-			height: 100%;
-			margin-left: 5px;
-			padding: 20px;
-		}
-	</style>
+	<title>Document</title>
 </head>
 
 <body>
-	<div id="sidebar">
-		Sidebar content
-	</div>
-	<div id="resizer"></div>
-	<div id="main-content">
-		Main content
-	</div>
-	<script>
-		const resizer = document.getElementById('resizer');
-		const sidebar = document.getElementById('sidebar');
-		let isResizing = false;
 
-		resizer.addEventListener('mousedown', function (e) {
-			isResizing = true;
-			document.addEventListener('mousemove', resize);
-			document.addEventListener('mouseup', stopResize);
-		});
+	<script async src="https://cusdis.com/js/cusdis.es.js"></script>
 
-		function resize(e) {
-			if (isResizing) {
-				requestAnimationFrame(() => {
-					sidebar.style.width = (e.clientX - sidebar.getBoundingClientRect().left) + 'px';
-				})
-			}
-		}
+	<div style="" id="cusdis_thread" data-page-title="dev" data-page-url="dev-url" data-host="https://cusdis.com"
+		data-app-id="d67b2c1b-0a90-45c4-b76f-a21b7a01f9b8" data-page-id="999"></div>
 
-		function stopResize() {
-			isResizing = false;
-			document.removeEventListener('mousemove', resize);
-		}
-	</script>
+
 </body>
 
 </html>
