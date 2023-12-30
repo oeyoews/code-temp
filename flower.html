@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>带有随机分支的树生长动画</title>
+	<style>
+		body {
+			margin: 0;
+			overflow: hidden;
+			background-color: #000;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="treeCanvas"></canvas>
+
+	<script>
+		const canvas = document.getElementById('treeCanvas');
+		const ctx = canvas.getContext('2d');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		function drawTree(x, y, length, angle, branchWidth) {
+			ctx.beginPath();
+			ctx.save();
+			ctx.strokeStyle = '#fff5';
+			ctx.fillStyle = '#228B22'; // 绿色
+			// ctx.lineWidth = branchWidth;
+			ctx.translate(x, y);
+			ctx.rotate(angle * Math.PI / 180);
+			ctx.moveTo(0, 0);
+			ctx.lineTo(0, -length);
+			ctx.stroke();
+
+			if (length < 10) {
+				ctx.restore();
+				return;
+			}
+
+			const randomAngle1 = angle + Math.random() * 20 - 10;
+			const randomAngle2 = angle + Math.random() * 20 - 10;
+
+			const randomLengthFactor1 = 0.7 + Math.random() * 0.2;
+			const randomLengthFactor2 = 0.7 + Math.random() * 0.2;
+
+			drawTree(0, -length, length * randomLengthFactor1, randomAngle1, branchWidth * 0.7);
+			drawTree(0, -length, length * randomLengthFactor2, randomAngle2, branchWidth * 0.7);
+
+			ctx.restore();
+		}
+
+		function animate() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			const trunkLength = 120;
+			const trunkWidth = 10;
+			const trunkAngle = 0;
+
+			drawTree(canvas.width / 2, canvas.height, trunkLength, trunkAngle, trunkWidth);
+
+			// requestAnimationFrame(animate);
+		}
+
+		animate();
+	</script>
+</body>
+
+</html>
