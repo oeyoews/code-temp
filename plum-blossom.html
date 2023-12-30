@@ -138,21 +138,21 @@
 		}
 
 		// Resize canvas
-		window.addEventListener('resize', () => {
-			size = { width: window.innerWidth, height: window.innerHeight };
-			initCanvas(canvasEl, size.width, size.height);
-			start(ctx);
-		});
+		// window.addEventListener('resize', () => {
+		// 	size = { width: window.innerWidth, height: window.innerHeight };
+		// 	initCanvas(canvasEl, size.width, size.height);
+		// 	start(ctx);
+		// });
 
-		// Stop animation on visibility change
-		document.addEventListener('visibilitychange', () => {
-			if (document.visibilityState === 'hidden') {
-				stopped = true;
-			} else {
-				stopped = false;
-				requestAnimationFrame(update);
-			}
-		});
+		// // Stop animation on visibility change
+		// document.addEventListener('visibilitychange', () => {
+		// 	if (document.visibilityState === 'hidden') {
+		// 		stopped = true;
+		// 	} else {
+		// 		stopped = false;
+		// 		requestAnimationFrame(update);
+		// 	}
+		// });
 
 		// Initialize everything
 		const ctx = initCanvas(canvasEl, size.width, size.height);
