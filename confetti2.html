@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+	this is a demo
+	<div class="overflow-hidden pointer-events-none -z-10 fixed inset-0">
+		<canvas id="my-canvas"></canvas>
+	</div>
+
+	<script src="./confetti2.min.js"></script>
+
+	<script>
+		const confettiElement = document.getElementById('my-canvas');
+		const confettiSettings = {
+			target: confettiElement,
+			max: "40", "size": "0.8", "animate": true, "props": ["circle"], "colors": [[165, 104, 246], [230, 61, 135], [0, 199, 228], [253, 214, 126]], "clock": "5", "rotate": false, "width": "1494", "height": "845", "start_from_edge": false, "respawn": true
+		};
+		var confetti = new ConfettiGenerator(confettiSettings);
+		confetti.render();
+	</script>
+</body>
+
+</html>
