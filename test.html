@@ -4,67 +4,161 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Resizable Sidebar</title>
+	<title>Canvas Animation</title>
 	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			height: 100vh;
-			display: flex;
+		.container {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			pointer-events: none;
+			z-index: -1;
 		}
 
-		#sidebar {
-			width: 200px;
-			background-color: #f2f2f2;
-			overflow: hidden;
-		}
-
-		#resizer {
-			width: 5px;
-			cursor: ew-resize;
-		}
-
-		#resizer:hover {
-			background-color: #ccc;
-		}
-
-		#main-content {
-			flex: 1;
-			padding: 20px;
+		.container canvas {
+			width: 100%;
+			height: 100%;
 		}
 	</style>
 </head>
 
 <body>
-	<div id="sidebar">
-		Sidebar content
-	</div>
-	<div id="resizer"></div>
-	<div id="main-content">
-		Main content
-	</div>
-	<script>
-		const resizer = document.getElementById('resizer');
-		const sidebar = document.getElementById('sidebar');
-		let isResizing = false;
 
-		resizer.addEventListener('mousedown', function (e) {
-			isResizing = true;
-			document.addEventListener('mousemove', resize);
-			document.addEventListener('mouseup', stopResize);
+	<div class="container">
+		<canvas id="canvasEl"></canvas>
+	</div>
+
+	<script>
+		const r180 = Math.PI;
+		const r90 = Math.PI / 2;
+		const r15 = Math.PI / 12;
+		const color = '#88888825';
+
+		const canvasEl = document.getElementById('canvasEl');
+		const random = Math.random;
+		let MIN_BRANCH = 30;
+		let len = 6;
+		let stopped = false;
+		let size = { width: window.innerWidth, height: window.innerHeight };
+		let steps = [];
+		let prevSteps = [];
+
+		function initCanvas(canvas, width, height, dpi) {
+			const ctx = canvas.getContext('2d');
+			const dpr = window.devicePixelRatio || 1;
+			const bsr = ctx.webkitBackingStorePixelRatio ||
+				ctx.mozBackingStorePixelRatio ||
+				ctx.msBackingStorePixelRatio ||
+				ctx.oBackingStorePixelRatio ||
+				ctx.backingStorePixelRatio || 1;
+
+			dpi = dpi || dpr / bsr;
+
+			canvas.style.width = width + 'px';
+			canvas.style.height = height + 'px';
+			canvas.width = dpi * width;
+			canvas.height = dpi * height;
+			ctx.scale(dpi, dpi);
+
+			return ctx;
+		}
+
+		function polar2cart(x, y, r, theta) {
+			const dx = r * Math.cos(theta);
+			const dy = r * Math.sin(theta);
+			return [x + dx, y + dy];
+		}
+
+		function step(ctx, x, y, rad, counter = { value: 0 }) {
+			const length = random() * len;
+			counter.value += 1;
+
+			const [nx, ny] = polar2cart(x, y, length, rad);
+
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(nx, ny);
+			ctx.stroke();
+
+			const rad1 = rad + random() * r15;
+			const rad2 = rad - random() * r15;
+
+			if (nx < -100 || nx > size.width + 100 || ny < -100 || ny > size.height + 100)
+				return;
+
+			const rate = counter.value <= MIN_BRANCH ? 0.8 : 0.5;
+
+			if (random() < rate)
+				steps.push(() => step(ctx, nx, ny, rad1, counter));
+
+			if (random() < rate)
+				steps.push(() => step(ctx, nx, ny, rad2, counter));
+		}
+
+		function start(ctx) {
+			ctx.clearRect(0, 0, size.width, size.height);
+			ctx.lineWidth = 1;
+			ctx.strokeStyle = color;
+			prevSteps = [];
+			steps = [
+				() => step(ctx, random() * size.width, -5, r90),
+				() => step(ctx, random() * size.width, size.height + 5, -r90),
+				() => step(ctx, -5, random() * size.height, 0),
+				() => step(ctx, size.width + 5, random() * size.height, r180),
+			];
+
+			if (size.width < 500)
+				steps = steps.slice(0, 2);
+			stopped = false;
+			requestAnimationFrame(update);
+		}
+
+		function update() {
+			if (stopped) return;
+			let count = 0;
+			while (steps.length && count++ < 100) {
+				const st = steps.pop();
+				prevSteps.push(st);
+				st();
+			}
+
+			if (!steps.length) {
+				if (prevSteps.length) {
+					MIN_BRANCH += 5;
+					len *= 0.99;
+					steps = prevSteps;
+					prevSteps = [];
+				} else {
+					return start(ctx);
+				}
+			}
+
+			requestAnimationFrame(update);
+		}
+
+		// Resize canvas
+		window.addEventListener('resize', () => {
+			size = { width: window.innerWidth, height: window.innerHeight };
+			initCanvas(canvasEl, size.width, size.height);
+			start(ctx);
 		});
 
-		function resize(e) {
-			if (isResizing) {
-				sidebar.style.width = (e.clientX - sidebar.getBoundingClientRect().left) + 'px';
+		// Stop animation on visibility change
+		document.addEventListener('visibilitychange', () => {
+			if (document.visibilityState === 'hidden') {
+				stopped = true;
+			} else {
+				stopped = false;
+				requestAnimationFrame(update);
 			}
-		}
+		});
 
-		function stopResize() {
-			isResizing = false;
-			document.removeEventListener('mousemove', resize);
-		}
+		// Initialize everything
+		const ctx = initCanvas(canvasEl, size.width, size.height);
+		start(ctx);
 	</script>
+
 </body>
 
 </html>
