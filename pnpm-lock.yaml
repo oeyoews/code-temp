@@ -5,12 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@codemirror/autocomplete':
+    specifier: github:codemirror/autocomplete
+    version: git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0)
   '@kreisler/js-google-translate-free':
     specifier: ^2.1.0
     version: 2.1.0
   axios:
-    specifier: ^1.6.0
-    version: 1.6.0
+    specifier: ^1.6.5
+    version: 1.6.5
   blurhash:
     specifier: ^2.0.5
     version: 2.0.5
@@ -33,8 +36,8 @@ dependencies:
     specifier: ^3.3.2
     version: 3.3.2
   randomstring-plus:
-    specifier: ^1.2.0
-    version: 1.2.0
+    specifier: ^1.3.0
+    version: 1.3.0
   skill-badges:
     specifier: ^1.4.0
     version: 1.4.0
@@ -46,96 +49,48 @@ dependencies:
     version: 9.0.1
 
 devDependencies:
-  '@biomejs/biome':
-    specifier: ^1.4.1
-    version: 1.4.1
   tw5-plugins-types:
     specifier: ^1.0.1
     version: 1.0.1
 
 packages:
 
-  /@babel/runtime@7.23.2:
-    resolution: {integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==}
+  /@babel/runtime@7.23.8:
+    resolution: {integrity: sha512-Y7KbAP984rn1VGMbGqKmBLio9V7y5Je9GvU4rQPCPinCyNfUcToxIXl06d59URp/F3LwinvODxab5N/G6qggkw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      regenerator-runtime: 0.14.0
+      regenerator-runtime: 0.14.1
     dev: false
 
-  /@biomejs/biome@1.4.1:
-    resolution: {integrity: sha512-JccVAwPbhi37pdxbAGmaOBjUTKEwEjWAhl7rKkVVuXHo4MLASXJ5HR8BTgrImi4/7rTBsGz1tgVD1Kwv1CHGRg==}
-    engines: {node: '>=14.*'}
-    hasBin: true
-    requiresBuild: true
-    optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 1.4.1
-      '@biomejs/cli-darwin-x64': 1.4.1
-      '@biomejs/cli-linux-arm64': 1.4.1
-      '@biomejs/cli-linux-x64': 1.4.1
-      '@biomejs/cli-win32-arm64': 1.4.1
-      '@biomejs/cli-win32-x64': 1.4.1
-    dev: true
+  /@codemirror/language@6.10.0:
+    resolution: {integrity: sha512-2vaNn9aPGCRFKWcHPFksctzJ8yS5p7YoaT+jHpc0UGKzNuAIx4qy6R5wiqbP+heEEdyaABA582mNqSHzSoYdmg==}
+    dependencies:
+      '@codemirror/state': 6.4.0
+      '@codemirror/view': 6.23.0
+      '@lezer/common': 1.2.0
+      '@lezer/highlight': 1.2.0
+      '@lezer/lr': 1.3.14
+      style-mod: 4.1.0
+    dev: false
 
-  /@biomejs/cli-darwin-arm64@1.4.1:
-    resolution: {integrity: sha512-PZWy2Idndqux38p6AXSDQM2ldRAWi32bvb7bMbTN0ALzpWYMYnxd71ornatumSSJYoNhKmxzDLq+jct7nZJ79w==}
-    engines: {node: '>=14.*'}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
+  /@codemirror/state@6.4.0:
+    resolution: {integrity: sha512-hm8XshYj5Fo30Bb922QX9hXB/bxOAVH+qaqHBzw5TKa72vOeslyGwd4X8M0c1dJ9JqxlaMceOQ8RsL9tC7gU0A==}
+    dev: false
 
-  /@biomejs/cli-darwin-x64@1.4.1:
-    resolution: {integrity: sha512-soj3BWhnsM1M2JlzR09cibUzG1owJqetwj/Oo7yg0foijo9lNH9XWXZfJBYDKgW/6Fomn+CC2EcUS+hisQzt9g==}
-    engines: {node: '>=14.*'}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@biomejs/cli-linux-arm64@1.4.1:
-    resolution: {integrity: sha512-YIZqfJUg4F+fPsBTXxgD7EU2E5OAYbmYSl/snf4PevwfQCWE/omOFZv+NnIQmjYj9I7ParDgcJvanoA3/kO0JQ==}
-    engines: {node: '>=14.*'}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@biomejs/cli-linux-x64@1.4.1:
-    resolution: {integrity: sha512-9YOZw3qBd/KUj63A6Hn2zZgzGb2nbESM0qNmeMXgmqinVKM//uc4OgY5TuKITuGjMSvcVxxd4dX1IzYjV9qvNQ==}
-    engines: {node: '>=14.*'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@biomejs/cli-win32-arm64@1.4.1:
-    resolution: {integrity: sha512-nWQbvkNKxYn/kCQ0yVF8kCaS3VzaGvtFSmItXiMknU4521LDjJ7tNWH12Gol+pIslrCbd4E1LhJa0a3ThRsBVg==}
-    engines: {node: '>=14.*'}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@biomejs/cli-win32-x64@1.4.1:
-    resolution: {integrity: sha512-88fR2CQxQ4YLs2BUDuywWYQpUKgU3A3sTezANFc/4LGKQFFLV2yX+F7QAdZVkMHfA+RD9Xg178HomM/6mnTNPA==}
-    engines: {node: '>=14.*'}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
+  /@codemirror/view@6.23.0:
+    resolution: {integrity: sha512-/51px9N4uW8NpuWkyUX+iam5+PM6io2fm+QmRnzwqBy5v/pwGg9T0kILFtYeum8hjuvENtgsGNKluOfqIICmeQ==}
+    dependencies:
+      '@codemirror/state': 6.4.0
+      style-mod: 4.1.0
+      w3c-keyname: 2.2.8
+    dev: false
 
   /@jimp/bmp@0.16.13(@jimp/custom@0.16.13):
     resolution: {integrity: sha512-9edAxu7N2FX7vzkdl5Jo1BbACfycUtBQX+XBMcHA2bk62P8R0otgkHg798frgAk/WxQIzwxqOH6wMiCwrlAzdQ==}
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/custom': 0.16.13
       '@jimp/utils': 0.16.13
       bmp-js: 0.1.0
@@ -144,7 +99,7 @@ packages:
   /@jimp/core@0.16.13:
     resolution: {integrity: sha512-qXpA1tzTnlkTku9yqtuRtS/wVntvE6f3m3GNxdTdtmc+O+Wcg9Xo2ABPMh7Nc0AHbMKzwvwgB2JnjZmlmJEObg==}
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/utils': 0.16.13
       any-base: 1.1.0
       buffer: 5.7.1
@@ -160,7 +115,7 @@ packages:
   /@jimp/custom@0.16.13:
     resolution: {integrity: sha512-LTATglVUPGkPf15zX1wTMlZ0+AU7cGEGF6ekVF1crA8eHUWsGjrYTB+Ht4E3HTrCok8weQG+K01rJndCp/l4XA==}
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/core': 0.16.13
     dev: false
 
@@ -169,7 +124,7 @@ packages:
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/custom': 0.16.13
       '@jimp/utils': 0.16.13
       gifwrap: 0.9.4
@@ -181,7 +136,7 @@ packages:
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/custom': 0.16.13
       '@jimp/utils': 0.16.13
       jpeg-js: 0.4.4
@@ -192,7 +147,7 @@ packages:
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/custom': 0.16.13
       '@jimp/utils': 0.16.13
     dev: false
@@ -202,7 +157,7 @@ packages:
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/custom': 0.16.13
       '@jimp/utils': 0.16.13
       pngjs: 3.4.0
@@ -213,7 +168,7 @@ packages:
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/custom': 0.16.13
       utif: 2.0.1
     dev: false
@@ -223,7 +178,7 @@ packages:
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       '@jimp/bmp': 0.16.13(@jimp/custom@0.16.13)
       '@jimp/custom': 0.16.13
       '@jimp/gif': 0.16.13(@jimp/custom@0.16.13)
@@ -236,7 +191,7 @@ packages:
   /@jimp/utils@0.16.13:
     resolution: {integrity: sha512-VyCpkZzFTHXtKgVO35iKN0sYR10psGpV6SkcSeV4oF7eSYlR8Bl6aQLCzVeFjvESF7mxTmIiI3/XrMobVrtxDA==}
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.8
       regenerator-runtime: 0.13.11
     dev: false
 
@@ -246,6 +201,22 @@ packages:
       axios: 1.4.0
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  /@lezer/common@1.2.0:
+    resolution: {integrity: sha512-Wmvlm4q6tRpwiy20TnB3yyLTZim38Tkc50dPY8biQRwqE+ati/wD84rm3N15hikvdT4uSg9phs9ubjvcLmkpKg==}
+    dev: false
+
+  /@lezer/highlight@1.2.0:
+    resolution: {integrity: sha512-WrS5Mw51sGrpqjlh3d4/fOwpEV2Hd3YOkp9DBt4k8XZQcoTHZFB7sx030A6OcahF4J1nDQAa3jXlTVVYH50IFA==}
+    dependencies:
+      '@lezer/common': 1.2.0
+    dev: false
+
+  /@lezer/lr@1.3.14:
+    resolution: {integrity: sha512-z5mY4LStlA3yL7aHT/rqgG614cfcvklS+8oFRFBYrs4YaWLJyKKM4+nN6KopToX0o9Hj6zmH6M5kinOYuy06ug==}
+    dependencies:
+      '@lezer/common': 1.2.0
     dev: false
 
   /@sindresorhus/is@5.6.0:
@@ -272,8 +243,8 @@ packages:
     resolution: {integrity: sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==}
     dev: false
 
-  /@types/lodash@4.14.201:
-    resolution: {integrity: sha512-y9euML0cim1JrykNxADLfaG0FgD1g/yTHwUs/Jg9ZIU7WKj2/4IW9Lbb1WZbvck78W/lfGXFfe+u2EGfIJXdLQ==}
+  /@types/lodash@4.14.202:
+    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: false
 
   /@types/node@10.17.60:
@@ -331,17 +302,17 @@ packages:
   /axios@1.4.0:
     resolution: {integrity: sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==}
     dependencies:
-      follow-redirects: 1.15.3
+      follow-redirects: 1.15.4
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
 
-  /axios@1.6.0:
-    resolution: {integrity: sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==}
+  /axios@1.6.5:
+    resolution: {integrity: sha512-Ii012v05KEVuUoFWmMW/UQv9aRIc3ZwkWDcM+h5Il8izZCtRVpDUfwpoFf7eOtajT3QiGR4yDUx7lPqHJULgbg==}
     dependencies:
-      follow-redirects: 1.15.3
+      follow-redirects: 1.15.4
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -574,7 +545,7 @@ packages:
     engines: {node: ^12.20 || >= 14.13}
     dependencies:
       node-domexception: 1.0.0
-      web-streams-polyfill: 3.2.1
+      web-streams-polyfill: 3.3.2
     dev: false
 
   /file-type@16.5.4:
@@ -591,8 +562,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /follow-redirects@1.15.3:
-    resolution: {integrity: sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==}
+  /follow-redirects@1.15.4:
+    resolution: {integrity: sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -698,7 +669,7 @@ packages:
       decompress-response: 6.0.0
       form-data-encoder: 2.1.4
       get-stream: 6.0.1
-      http2-wrapper: 2.2.0
+      http2-wrapper: 2.2.1
       lowercase-keys: 3.0.0
       p-cancelable: 3.0.0
       responselike: 3.0.0
@@ -754,8 +725,8 @@ packages:
       sshpk: 1.18.0
     dev: false
 
-  /http2-wrapper@2.2.0:
-    resolution: {integrity: sha512-kZB0wxMo0sh1PehyjJUWRFEd99KC5TLjZ2cULC4f9iqJBAmKQQXEICjxl5iPJRwP40dpeHFqqhm7tYCvODpqpQ==}
+  /http2-wrapper@2.2.1:
+    resolution: {integrity: sha512-V5nVw1PAOgfI3Lmeaj2Exmeg7fenjhRUgz1lPSezy1CuhPYbgQtbQj4jZfEAEMlaL+vupsvhjqCyjzob0yxsmQ==}
     engines: {node: '>=10.19.0'}
     dependencies:
       quick-lru: 5.1.1
@@ -989,8 +960,8 @@ packages:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
     dev: false
 
-  /node-abi@3.51.0:
-    resolution: {integrity: sha512-SQkEP4hmNWjlniS5zdnfIXTk1x7Ome85RDzHlTbBtzE97Gfwz/Ipw4v/Ryk20DWIy3yCNVLVlGKApCnmvYoJbA==}
+  /node-abi@3.54.0:
+    resolution: {integrity: sha512-p7eGEiQil0YUV3ItH4/tBb781L5impVmmx2E9FRKF7d18XXzp4PGT2tdYMFY6wQqgxD0IwNZOiSJ0/K0fSi/OA==}
     engines: {node: '>=10'}
     dependencies:
       semver: 7.5.4
@@ -1020,7 +991,7 @@ packages:
       '@jimp/custom': 0.16.13
       '@jimp/plugin-resize': 0.16.13(@jimp/custom@0.16.13)
       '@jimp/types': 0.16.13(@jimp/custom@0.16.13)
-      '@types/lodash': 4.14.201
+      '@types/lodash': 4.14.202
       '@types/node': 10.17.60
       lodash: 4.17.21
       url: 0.11.3
@@ -1124,7 +1095,7 @@ packages:
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
-      node-abi: 3.51.0
+      node-abi: 3.54.0
       pump: 3.0.0
       rc: 1.2.8
       simple-get: 4.0.1
@@ -1178,8 +1149,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /randomstring-plus@1.2.0:
-    resolution: {integrity: sha512-db0WG7iZML4oBr+IF5Buvu3zEQL5QoagWLiAvseWG281dq/thgdHR5smTVOue169odBrpff27h0I25Vpuur+kg==}
+  /randomstring-plus@1.3.0:
+    resolution: {integrity: sha512-2tqD9hmddSZScV42yn0d4Fc/QBIehtg8doCqeIS6yiTMTA3zRdAGYHKT9ef2BTgPJGE1Z5Ztw3xii1E14Udkpg==}
     dev: false
 
   /rc@1.2.8:
@@ -1217,8 +1188,8 @@ packages:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: false
 
-  /regenerator-runtime@0.14.0:
-    resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==}
+  /regenerator-runtime@0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
     dev: false
 
   /request@2.88.2:
@@ -1385,6 +1356,10 @@ packages:
       peek-readable: 4.1.0
     dev: false
 
+  /style-mod@4.1.0:
+    resolution: {integrity: sha512-Ca5ib8HrFn+f+0n4N4ScTIA9iTOQ7MaGS1ylHcoVqW9J7w2w8PzN6g9gKmTYgGEBH8e120+RCmhpje6jC5uGWA==}
+    dev: false
+
   /tar-fs@2.1.1:
     resolution: {integrity: sha512-V0r2Y9scmbDRLCNex/+hYzvp/zyYjvFbHPNgVTKfQvVrb6guiE/fxP+XblDNR011utopbkex2nM4dHNV6GDsng==}
     dependencies:
@@ -1501,8 +1476,12 @@ packages:
       extsprintf: 1.3.0
     dev: false
 
-  /web-streams-polyfill@3.2.1:
-    resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
+  /w3c-keyname@2.2.8:
+    resolution: {integrity: sha512-dpojBhNsCNN7T82Tm7k26A6G9ML3NkhDsnw9n/eoxSRlVBB4CEtIQ/KTCLI2Fwf3ataSXRhYFkQi3SlnFwPvPQ==}
+    dev: false
+
+  /web-streams-polyfill@3.3.2:
+    resolution: {integrity: sha512-3pRGuxRF5gpuZc0W+EpwQRmCD7gRqcDOMt688KmdlDAgAyaB1XlN0zq2njfDNm44XVdIouE7pZ6GzbdyH47uIQ==}
     engines: {node: '>= 8'}
     dev: false
 
@@ -1543,4 +1522,22 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: false
+
+  git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0):
+    resolution: {commit: 0b6faf9c032f86b69e3110381aa23eafc845acc4, repo: git@github.com:codemirror/autocomplete.git, type: git}
+    id: git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4
+    name: '@codemirror/autocomplete'
+    version: 6.11.1
+    requiresBuild: true
+    peerDependencies:
+      '@codemirror/language': ^6.0.0
+      '@codemirror/state': ^6.0.0
+      '@codemirror/view': ^6.0.0
+      '@lezer/common': ^1.0.0
+    dependencies:
+      '@codemirror/language': 6.10.0
+      '@codemirror/state': 6.4.0
+      '@codemirror/view': 6.23.0
+      '@lezer/common': 1.2.0
     dev: false

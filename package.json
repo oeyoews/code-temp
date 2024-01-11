@@ -15,8 +15,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@codemirror/autocomplete": "github:codemirror/autocomplete",
     "@kreisler/js-google-translate-free": "^2.1.0",
-    "axios": "^1.6.0",
+    "axios": "^1.6.5",
     "blurhash": "^2.0.5",
     "fast-blurhash": "^1.1.2",
     "got": "^13.0.0",
@@ -24,13 +25,12 @@
     "lqip": "^2.1.0",
     "lqip-modern": "^2.0.0",
     "node-fetch": "^3.3.2",
-    "randomstring-plus": "^1.2.0",
+    "randomstring-plus": "^1.3.0",
     "skill-badges": "^1.4.0",
     "translate": "^2.0.2",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.4.1",
     "tw5-plugins-types": "^1.0.1"
   }
 }
