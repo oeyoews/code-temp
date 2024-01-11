@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script src="./fuzzy.js"></script>
+	<script>
+		let haystack = [
+			'puzzle',
+			'Super Awesome Thing (now with stuff!)',
+			'FileName.js',
+			'/feeding/the/catPic.jpg',
+			'测试内容'
+		];
+
+		let needle = '测';
+
+		let opts = { alpha: "a-zа-яё\\u4E00-\\u9FFF" };
+
+
+		let uf = new uFuzzy(opts);
+
+		// pre-filter
+		let idxs = uf.filter(haystack, needle);
+		let info = uf.info(idxs, haystack, needle);
+		// idxs can be null when the needle is non-searchable (has no alpha-numeric chars)
+		if (idxs != null && idxs.length > 0) {
+			// sort/rank only when <= 1,000 items
+			let infoThresh = 1e3;
+
+			if (idxs.length <= infoThresh) {
+				let info = uf.info(idxs, haystack, needle);
+
+				// order is a double-indirection array (a re-order of the passed-in idxs)
+				// this allows corresponding info to be grabbed directly by idx, if needed
+				let order = uf.sort(info, haystack, needle);
+
+				// render post-filtered & ordered matches
+				for (let i = 0; i < order.length; i++) {
+					// using info.idx here instead of idxs because uf.info() may have
+					// further reduced the initial idxs based on prefix/suffix rules
+					console.log(haystack[info.idx[order[i]]], info.idx[order[i]]);
+				}
+			}
+			else {
+				// render pre-filtered but unordered matches
+				for (let i = 0; i < idxs.length; i++) {
+					console.log(haystack[idxs[i]], info.ranges[order[i]],);
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

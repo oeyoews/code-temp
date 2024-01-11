@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Anime Character with Three.js</title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		canvas {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="module">
+		import * as THREE from 'https://threejs.org/build/three.module.js';
+		import { GLTFLoader } from 'https://threejs.org/examples/jsm/loaders/GLTFLoader.js';
+
+		// 创建场景
+		const scene = new THREE.Scene();
+
+		// 创建相机
+		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+		camera.position.z = 5;
+
+		// 创建渲染器
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.body.appendChild(renderer.domElement);
+
+		// 加载人物模型
+		const loader = new GLTFLoader();
+		loader.load('path/to/your/anime_character.gltf', (gltf) => {
+			// 从模型中获取 Mesh 对象
+			const character = gltf.scene;
+
+			// 将人物模型添加到场景
+			scene.add(character);
+		});
+
+		// 动画循环
+		const animate = () => {
+			requestAnimationFrame(animate);
+
+			// 渲染场景
+			renderer.render(scene, camera);
+		};
+
+		// 响应窗口大小变化
+		window.addEventListener('resize', () => {
+			const newWidth = window.innerWidth;
+			const newHeight = window.innerHeight;
+
+			camera.aspect = newWidth / newHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize(newWidth, newHeight);
+		});
+
+		// 开始动画
+		animate();
+	</script>
+</body>
+
+</html>
