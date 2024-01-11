@@ -8,6 +8,9 @@ dependencies:
   '@codemirror/autocomplete':
     specifier: github:codemirror/autocomplete
     version: github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0)
+  '@codemirror/state':
+    specifier: github:codemirror/state
+    version: git@github.com+codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e
   '@codemirror/view':
     specifier: github:codemirror/view
     version: github.com/codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca
@@ -1527,6 +1530,14 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: false
 
+  git@github.com+codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e:
+    resolution: {commit: 8bc5f63f73722c6019e6248d8338ea46802d157e, repo: git@github.com:codemirror/state.git, type: git}
+    name: '@codemirror/state'
+    version: 6.4.0
+    prepare: true
+    requiresBuild: true
+    dev: false
+
   github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0):
     resolution: {tarball: https://codeload.github.com/codemirror/autocomplete/tar.gz/0b6faf9c032f86b69e3110381aa23eafc845acc4}
     id: github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4
@@ -1540,7 +1551,7 @@ packages:
       '@lezer/common': ^1.0.0
     dependencies:
       '@codemirror/language': 6.10.0
-      '@codemirror/state': 6.4.0
+      '@codemirror/state': git@github.com+codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e
       '@codemirror/view': github.com/codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca
       '@lezer/common': 1.2.0
     dev: false
@@ -1549,7 +1560,6 @@ packages:
     resolution: {tarball: https://codeload.github.com/codemirror/view/tar.gz/4ac4cdbf900df11855f269f82a89273380ad25ca}
     name: '@codemirror/view'
     version: 6.23.0
-    prepare: true
     requiresBuild: true
     dependencies:
       '@codemirror/state': 6.4.0
