@@ -7,19 +7,19 @@ settings:
 dependencies:
   '@codemirror/autocomplete':
     specifier: github:codemirror/autocomplete
-    version: git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0)
+    version: github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0)
   '@codemirror/lint':
     specifier: github:codemirror/lint
-    version: git@github.com+codemirror/lint/88ba8ef965c57e707501b0486435ec15c4150ec6
+    version: github.com/codemirror/lint/88ba8ef965c57e707501b0486435ec15c4150ec6
   '@codemirror/search':
     specifier: github:codemirror/search
     version: github.com/codemirror/search/16a1fc132b3d475c7e36bc0668b9bd772b158bf9
   '@codemirror/state':
     specifier: github:codemirror/state
-    version: git@github.com+codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e
+    version: github.com/codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e
   '@codemirror/view':
     specifier: github:codemirror/view
-    version: git@github.com+codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca
+    version: github.com/codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca
   '@kreisler/js-google-translate-free':
     specifier: ^2.1.0
     version: 2.1.0
@@ -1547,9 +1547,9 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: false
 
-  git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0):
-    resolution: {commit: 0b6faf9c032f86b69e3110381aa23eafc845acc4, repo: git@github.com:codemirror/autocomplete.git, type: git}
-    id: git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4
+  github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0):
+    resolution: {tarball: https://codeload.github.com/codemirror/autocomplete/tar.gz/0b6faf9c032f86b69e3110381aa23eafc845acc4}
+    id: github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4
     name: '@codemirror/autocomplete'
     version: 6.11.1
     requiresBuild: true
@@ -1560,13 +1560,13 @@ packages:
       '@lezer/common': ^1.0.0
     dependencies:
       '@codemirror/language': 6.10.0
-      '@codemirror/state': git@github.com+codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e
-      '@codemirror/view': git@github.com+codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca
+      '@codemirror/state': github.com/codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e
+      '@codemirror/view': github.com/codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca
       '@lezer/common': 1.2.0
     dev: false
 
-  git@github.com+codemirror/lint/88ba8ef965c57e707501b0486435ec15c4150ec6:
-    resolution: {commit: 88ba8ef965c57e707501b0486435ec15c4150ec6, repo: git@github.com:codemirror/lint.git, type: git}
+  github.com/codemirror/lint/88ba8ef965c57e707501b0486435ec15c4150ec6:
+    resolution: {tarball: https://codeload.github.com/codemirror/lint/tar.gz/88ba8ef965c57e707501b0486435ec15c4150ec6}
     name: '@codemirror/lint'
     version: 6.4.2
     requiresBuild: true
@@ -1574,24 +1574,6 @@ packages:
       '@codemirror/state': 6.4.0
       '@codemirror/view': 6.23.0
       crelt: 1.0.6
-    dev: false
-
-  git@github.com+codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e:
-    resolution: {commit: 8bc5f63f73722c6019e6248d8338ea46802d157e, repo: git@github.com:codemirror/state.git, type: git}
-    name: '@codemirror/state'
-    version: 6.4.0
-    requiresBuild: true
-    dev: false
-
-  git@github.com+codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca:
-    resolution: {commit: 4ac4cdbf900df11855f269f82a89273380ad25ca, repo: git@github.com:codemirror/view.git, type: git}
-    name: '@codemirror/view'
-    version: 6.23.0
-    requiresBuild: true
-    dependencies:
-      '@codemirror/state': 6.4.0
-      style-mod: 4.1.0
-      w3c-keyname: 2.2.8
     dev: false
 
   github.com/codemirror/search/16a1fc132b3d475c7e36bc0668b9bd772b158bf9:
@@ -1603,6 +1585,24 @@ packages:
       '@codemirror/state': 6.4.0
       '@codemirror/view': 6.23.0
       crelt: 1.0.6
+    dev: false
+
+  github.com/codemirror/state/8bc5f63f73722c6019e6248d8338ea46802d157e:
+    resolution: {tarball: https://codeload.github.com/codemirror/state/tar.gz/8bc5f63f73722c6019e6248d8338ea46802d157e}
+    name: '@codemirror/state'
+    version: 6.4.0
+    requiresBuild: true
+    dev: false
+
+  github.com/codemirror/view/4ac4cdbf900df11855f269f82a89273380ad25ca:
+    resolution: {tarball: https://codeload.github.com/codemirror/view/tar.gz/4ac4cdbf900df11855f269f82a89273380ad25ca}
+    name: '@codemirror/view'
+    version: 6.23.0
+    requiresBuild: true
+    dependencies:
+      '@codemirror/state': 6.4.0
+      style-mod: 4.1.0
+      w3c-keyname: 2.2.8
     dev: false
 
   github.com/transitive-bullshit/random/56ec13af7b4ee438a83279087b54d7472eb110f8:
