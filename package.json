@@ -16,6 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "@codemirror/autocomplete": "github:codemirror/autocomplete",
+    "@codemirror/lint": "github:codemirror/lint",
+    "@codemirror/search": "github:codemirror/search",
     "@codemirror/state": "github:codemirror/state",
     "@codemirror/view": "github:codemirror/view",
     "@kreisler/js-google-translate-free": "^2.1.0",
