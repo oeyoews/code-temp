@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@codemirror/autocomplete':
     specifier: github:codemirror/autocomplete
-    version: git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0)
+    version: github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0)
   '@kreisler/js-google-translate-free':
     specifier: ^2.1.0
     version: 2.1.0
@@ -1524,11 +1524,12 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: false
 
-  git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0):
-    resolution: {commit: 0b6faf9c032f86b69e3110381aa23eafc845acc4, repo: git@github.com:codemirror/autocomplete.git, type: git}
-    id: git@github.com+codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4
+  github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4(@codemirror/language@6.10.0)(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0):
+    resolution: {tarball: https://codeload.github.com/codemirror/autocomplete/tar.gz/0b6faf9c032f86b69e3110381aa23eafc845acc4}
+    id: github.com/codemirror/autocomplete/0b6faf9c032f86b69e3110381aa23eafc845acc4
     name: '@codemirror/autocomplete'
     version: 6.11.1
+    prepare: true
     requiresBuild: true
     peerDependencies:
       '@codemirror/language': ^6.0.0
