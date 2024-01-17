@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>悬浮链接弹窗预览</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #f0f0f0;
+		}
+
+		.preview-link {
+			text-decoration: none;
+			padding: 10px 20px;
+			background-color: #3498db;
+			color: #fff;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.preview-container {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.preview-content {
+			max-width: 400px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<a href="#" class="preview-link" data-preview="这里放预览的内容">悬浮链接</a>
+
+	<div class="preview-container" id="previewContainer">
+		<div class="preview-content" id="previewContent"></div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const previewLink = document.querySelector('.preview-link');
+			const previewContainer = document.getElementById('previewContainer');
+			const previewContent = document.getElementById('previewContent');
+
+			previewLink.addEventListener('mousemove', function (e) {
+				const previewData = this.getAttribute('data-preview');
+				previewContent.textContent = previewData;
+
+				// 设置弹窗位置，稍微偏移以避免遮挡鼠标
+				const offsetX = 10;
+				const offsetY = 20;
+				const mouseX = e.pageX + offsetX;
+				const mouseY = e.pageY + offsetY;
+
+				previewContainer.style.left = mouseX + 'px';
+				previewContainer.style.top = mouseY + 'px';
+				previewContainer.style.display = 'block';
+			});
+
+			previewLink.addEventListener('mouseout', function () {
+				previewContainer.style.display = 'none';
+			});
+		});
+
+	</script>
+</body>
+
+</html>
