@@ -47,6 +47,15 @@ dependencies:
   lqip-modern:
     specifier: ^2.0.0
     version: 2.0.0
+  lunr:
+    specifier: ^2.3.9
+    version: 2.3.9
+  lunr-languages:
+    specifier: ^1.14.0
+    version: 1.14.0
+  medium-zoom:
+    specifier: ^1.1.0
+    version: 1.1.0
   node-fetch:
     specifier: ^3.3.2
     version: 3.3.2
@@ -919,6 +928,18 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /lunr-languages@1.14.0:
+    resolution: {integrity: sha512-hWUAb2KqM3L7J5bcrngszzISY4BxrXn/Xhbb9TTCJYEGqlR1nG67/M14sp09+PTIRklobrn57IAxcdcO/ZFyNA==}
+    dev: false
+
+  /lunr@2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
+    dev: false
+
+  /medium-zoom@1.1.0:
+    resolution: {integrity: sha512-ewyDsp7k4InCUp3jRmwHBRFGyjBimKps/AJLjRSox+2q/2H4p/PNpQf+pwONWlJiOudkBXtbdmVbFjqyybfTmQ==}
     dev: false
 
   /mime-db@1.52.0:

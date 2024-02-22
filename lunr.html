@@ -1,0 +1,33 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+
+<script>
+	require(['./lunr', './steam', './zh'], function (lunr, steam, zh) {
+		steam(lunr)
+		zh(lunr)
+
+		var documents = [{
+			"name": "Lunr 测试",
+			"text": "Like Solr, but much smaller, and not as bright. "
+		}, {
+			"name": "React",
+			"text": "A JavaScript library for building user interfaces. 测试"
+		}, {
+			"name": "Lodash",
+			"text": "A modern JavaScript utility library delivering modularity, performance & extras."
+		}]
+
+		var idx = lunr(function () {
+			this.use(lunr.zh)
+			this.ref('name')
+			this.field('text')
+
+			documents.forEach(function (doc) {
+				this.add(doc)
+			}, this)
+		})
+
+		const res = idx.search("library")
+		console.log(res)
+	})
+
+</script>
