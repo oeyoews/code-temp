@@ -21,3 +21,10 @@ function m1() {
 
 main();
 m1();
+
+const d = {
+  dmoe() {
+    console.log('99');
+  },
+};
+d.dmoe;

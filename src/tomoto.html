@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>番茄钟</title>
+  <style>
+    .timer {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="timer">{{ minutes }}:{{ seconds }}</div>
+    <div class="controls">
+      <button @click="startTimer" :disabled="isRunning">开始</button>
+      <button @click="pauseTimer" :disabled="!isRunning">暂停</button>
+      <button @click="resetTimer">重置</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3.4.21/dist/vue.global.prod.js"></script>
+  <script>
+    const { ref, watch, onBeforeUnmount } = Vue;
+
+    const app = Vue.createApp({
+      setup() {
+        const minutes = ref(25);
+        const seconds = ref(0);
+        const isRunning = ref(false);
+        let timerInterval = null;
+
+        const startTimer = () => {
+          if (!isRunning.value) {
+            isRunning.value = true;
+            timerInterval = setInterval(() => {
+              if (seconds.value > 0) {
+                seconds.value--;
+              } else if (minutes.value > 0) {
+                seconds.value = 59;
+                minutes.value--;
+              } else {
+                clearInterval(timerInterval);
+                isRunning.value = false;
+                alert('番茄钟完成！');
+              }
+            }, 1000);
+          }
+        };
+
+        const pauseTimer = () => {
+          clearInterval(timerInterval);
+          isRunning.value = false;
+        };
+
+        const resetTimer = () => {
+          clearInterval(timerInterval);
+          minutes.value = 25;
+          seconds.value = 0;
+          isRunning.value = false;
+        };
+
+        watch(isRunning, (newValue) => {
+          if (!newValue && timerInterval) {
+            clearInterval(timerInterval);
+          }
+        });
+
+        onBeforeUnmount(() => {
+          clearInterval(timerInterval);
+        });
+
+        return {
+          minutes,
+          seconds,
+          isRunning,
+          startTimer,
+          pauseTimer,
+          resetTimer
+        };
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+
+</html>

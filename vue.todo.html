@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo 应用</title>
+	<!-- 加载 Vue -->
+</head>
+
+<body>
+	<div id="app">
+		<h1>Todo List</h1>
+		<input type="text" v-model="newTodo" @keyup.enter="addTodo">
+		<button @click="addTodo">添加</button>
+		<ul>
+			<li v-for="(todo, index) in todos" :key="index" :class="{ completed: todo.completed }">
+				<span v-if="todo.editing">
+					<input type="text" v-model="todo.text" @keyup.enter="updateTodo(index)"
+						@keyup.escape="cancelEdit(index)">
+					<button @click="updateTodo(index)">保存</button>
+					<button @click="cancelEdit(index)">取消</button>
+				</span>
+				<span v-else @click="startEdit(index)">{{ todo.text }}</span>
+				<button @click="toggleComplete(index)">{{ todo.completed ? '未完成' : '完成' }}</button>
+				<button @click="removeTodo(index)">删除</button>
+			</li>
+		</ul>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.0/dist/vue.global.prod.js"></script>
+	<script>
+		const app = Vue.createApp({
+			data() {
+				return {
+					newTodo: '',
+					todos: []
+				};
+			},
+			methods: {
+				addTodo() {
+					if (this.newTodo.trim() !== '') {
+						this.todos.push({
+							text: this.newTodo,
+							completed: false,
+							editing: false
+						});
+						this.newTodo = '';
+					}
+				},
+				removeTodo(index) {
+					this.todos.splice(index, 1);
+				},
+				startEdit(index) {
+					this.todos[index].editing = true;
+				},
+				cancelEdit(index) {
+					this.todos[index].editing = false;
+				},
+				updateTodo(index) {
+					const todo = this.todos[index];
+					if (todo.text.trim() === '') {
+						this.removeTodo(index);
+					} else {
+						todo.editing = false;
+					}
+				},
+				toggleComplete(index) {
+					this.todos[index].completed = !this.todos[index].completed;
+				}
+			}
+		});
+
+		app.mount('#app');
+	</script>
+
+	<style>
+		.completed {
+			text-decoration: line-through;
+		}
+	</style>
+</body>
+
+</html>

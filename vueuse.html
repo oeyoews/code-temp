@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Testing</title>
+</head>
+
+<body>
+	<div id="app">
+		{{ message }} x: {{ x }} y: {{ y }}
+
+		<div ref="el">
+			<div v-for="item in list" :key="item.id">{{ item.name }}</div>
+		</div>
+	</div>
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://unpkg.com/@vueuse/shared"></script>
+	<script src="https://unpkg.com/@vueuse/core"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@vueuse/integrations@10.4.1/useSortable.iife.js"></script>
+
+	<script type="module">
+		const { createApp, ref } = Vue;
+		const { useMouse } = window.VueUse;
+		const { useSortable } = window.VueUse;
+
+		createApp({
+			setup() {
+				const message = ref("Hello Vue!");
+
+				const { x, y, sourceType } = useMouse();
+
+				const el = ref(null)
+				const list = ref([
+					{ id: 1, name: "a" },
+					{ id: 2, name: "b" },
+					{ id: 3, name: "c" },
+				]);
+
+				useSortable(el, list);
+
+				return {
+					message,
+					x,
+					y,
+					list,
+					el,
+				};
+			},
+		}).mount("#app");
+	</script>
+</body>
+
+</html>

@@ -35,6 +35,7 @@
     "random": "github:transitive-bullshit/random",
     "randomstring-plus": "^1.3.0",
     "skill-badges": "^1.4.0",
+    "tldraw": "^2.0.0",
     "translate": "^2.0.2",
     "uuid": "^9.0.1"
   },
