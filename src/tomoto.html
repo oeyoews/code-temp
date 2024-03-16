@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +9,12 @@
       font-size: 24px;
       text-align: center;
       margin-top: 50px;
+      transition: all 0.3s ease-in-out;
     }
-
     .controls {
       text-align: center;
       margin-top: 20px;
     }
-
     button {
       font-size: 16px;
       padding: 10px 20px;
@@ -24,14 +22,17 @@
     }
   </style>
 </head>
-
 <body>
   <div id="app">
-    <div class="timer">{{ minutes }}:{{ seconds }}</div>
+    <div class="timer" :key="`${minutes}-${seconds}`">{{ minutes }}:{{ seconds }}</div>
     <div class="controls">
       <button @click="startTimer" :disabled="isRunning">开始</button>
       <button @click="pauseTimer" :disabled="!isRunning">暂停</button>
       <button @click="resetTimer">重置</button>
+    </div>
+    <div class="adjust">
+      <button @click="adjustTime(5)">增加 5 分钟</button>
+      <button @click="adjustTime(-5)">减少 5 分钟</button>
     </div>
   </div>
 
@@ -41,7 +42,8 @@
 
     const app = Vue.createApp({
       setup() {
-        const minutes = ref(25);
+        const defaultMinutes = 25;
+        const minutes = ref(defaultMinutes);
         const seconds = ref(0);
         const isRunning = ref(false);
         let timerInterval = null;
@@ -71,9 +73,18 @@
 
         const resetTimer = () => {
           clearInterval(timerInterval);
-          minutes.value = 25;
+          minutes.value = defaultMinutes;
           seconds.value = 0;
           isRunning.value = false;
+        };
+
+        const adjustTime = (minutesToAdd) => {
+          if (!isRunning.value) {
+            minutes.value += minutesToAdd;
+            if (minutes.value < 0) {
+              minutes.value = 0;
+            }
+          }
         };
 
         watch(isRunning, (newValue) => {
@@ -92,7 +103,8 @@
           isRunning,
           startTimer,
           pauseTimer,
-          resetTimer
+          resetTimer,
+          adjustTime
         };
       }
     });
@@ -100,5 +112,4 @@
     app.mount('#app');
   </script>
 </body>
-
 </html>
