@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>分享示例</title>
+</head>
+
+<body>
+	<h1>分享示例</h1>
+
+	<button id="shareButton">分享内容</button>
+
+	<script>
+		// 获取分享按钮
+		var shareButton = document.getElementById('shareButton');
+
+		// 添加点击事件监听器
+		shareButton.addEventListener('click', function () {
+			// 检查浏览器是否支持 navigator.share
+			if (navigator.share) {
+				// 调用 navigator.share 分享内容
+				navigator.share({
+					title: 'Github',
+					text: '测试一下',
+					url: 'https://github.com/'
+				})
+					.then(() => {
+						console.log('分享成功');
+					})
+					.catch((error) => {
+						console.error('分享失败：', error);
+					});
+			} else {
+				console.error('浏览器不支持分享功能');
+			}
+		});
+	</script>
+</body>
+
+</html>

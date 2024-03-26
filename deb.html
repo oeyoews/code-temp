@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>输入防抖</title>
+</head>
+<body>
+<input type="text" id="inputField" placeholder="在此输入...">
+<p id="output"></p>
+
+<script>
+// 防抖函数
+function debounce(func, delay) {
+  let timer;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+
+// 处理输入事件的函数
+function handleInput() {
+  const input = document.getElementById('inputField').value;
+  document.getElementById('output').innerText = '输入内容：' + input;
+}
+
+// 使用防抖包装输入事件处理函数
+const debouncedInputHandler = debounce(handleInput, 500);
+
+// 添加输入事件监听器
+document.getElementById('inputField').addEventListener('input', debouncedInputHandler);
+</script>
+</body>
+</html>

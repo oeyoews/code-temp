@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>中国地图</title>
+	<!-- 引入 Vue 3 的 CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.6/dist/vue.global.prod.js"></script>
+	<!-- 引入 ECharts 的 CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+	<!-- 引入中国地图数据 -->
+	<script src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<div ref="chart" style="width: 100%; height: 600px;"></div>
+	</div>
+
+	<script>
+		const app = Vue.createApp({
+			mounted() {
+				const myChart = echarts.init(this.$refs.chart);
+				myChart.setOption({
+					title: {
+						text: '中国地图',
+						left: 'center',
+						textStyle: {
+							color: '#000',
+							fontSize: 16,
+						},
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: '{b}',
+					},
+					toolbox: {
+						show: true,
+						orient: 'vertical',
+						left: 'right',
+						top: 'center',
+						feature: {
+							dataView: { readOnly: false },
+							restore: {},
+							saveAsImage: {},
+						},
+					},
+					visualMap: {
+						min: 0,
+						max: 1000,
+						left: 'left',
+						top: 'bottom',
+						text: ['高', '低'],
+						calculable: true,
+						inRange: {
+							color: ['#f0f0f0', '#e0e0e0', '#c0c0c0', '#a0a0a0', '#808080', '#606060', '#404040'],
+						},
+					},
+					series: [
+						{
+							name: '中国地图',
+							type: 'map',
+							mapType: 'china',
+							roam: false,
+							label: {
+								show: true,
+							},
+							emphasis: {
+								label: {
+									show: true,
+								},
+							},
+							data: [
+								{ name: '北京', value: Math.round(Math.random() * 1000) },
+								{ name: '天津', value: Math.round(Math.random() * 1000) },
+								{ name: '上海', value: Math.round(Math.random() * 1000) },
+								{ name: '重庆', value: Math.round(Math.random() * 1000) },
+								{ name: '河北', value: Math.round(Math.random() * 1000) },
+								{ name: '山西', value: Math.round(Math.random() * 1000) },
+								{ name: '辽宁', value: Math.round(Math.random() * 1000) },
+								{ name: '吉林', value: Math.round(Math.random() * 1000) },
+								{ name: '黑龙江', value: Math.round(Math.random() * 1000) },
+								{ name: '江苏', value: Math.round(Math.random() * 1000) },
+								{ name: '浙江', value: Math.round(Math.random() * 1000) },
+								{ name: '安徽', value: Math.round(Math.random() * 1000) },
+								{ name: '福建', value: Math.round(Math.random() * 1000) },
+								{ name: '江西', value: Math.round(Math.random() * 1000) },
+								{ name: '山东', value: Math.round(Math.random() * 1000) },
+								{ name: '河南', value: Math.round(Math.random() * 1000) },
+								{ name: '湖北', value: Math.round(Math.random() * 1000) },
+								{ name: '湖南', value: Math.round(Math.random() * 1000) },
+								{ name: '广东', value: Math.round(Math.random() * 1000) },
+								{ name: '海南', value: Math.round(Math.random() * 1000) },
+								{ name: '四川', value: Math.round(Math.random() * 1000) },
+								{ name: '贵州', value: Math.round(Math.random() * 1000) },
+								{ name: '云南', value: Math.round(Math.random() * 1000) },
+								{ name: '西藏', value: Math.round(Math.random() * 1000) },
+								{ name: '陕西', value: Math.round(Math.random() * 1000) },
+								{ name: '甘肃', value: Math.round(Math.random() * 1000) },
+								{ name: '青海', value: Math.round(Math.random() * 1000) },
+								{ name: '宁夏', value: Math.round(Math.random() * 1000) },
+								{ name: '新疆', value: Math.round(Math.random() * 1000) },
+								{ name: '台湾', value: Math.round(Math.random() * 1000) },
+								{ name: '香港', value: Math.round(Math.random() * 1000) },
+								{ name: '澳门', value: Math.round(Math.random() * 1000) },
+							],
+						},
+						{
+							name: '到过的次数',
+							type: 'scatter',
+							coordinateSystem: 'geo',
+							data: [
+								{ name: '北京', value: [116.407, 39.904, Math.round(Math.random() * 100)] }, // 北京的经纬度及到过的次数
+								{ name: '天津', value: [117.200983, 39.084158, Math.round(Math.random() * 100)] }, // 天津的经纬度及到过的次数
+								{ name: '上海', value: [121.473701, 31.230416, Math.round(Math.random() * 100)] }, // 上海的经纬度及到过的次数
+								{ name: '重庆', value: [106.551643, 29.562849, Math.round(Math.random() * 100)] }, // 重庆的经纬度及到过的次数
+								{ name: '河北', value: [114.530235, 38.037433, Math.round(Math.random() * 100)] }, // 河北的经纬度及到过的次数
+								{
+									name: '山西',
+
+									value: [112.562678, 37.873499, Math.round(Math.random() * 100)]
+								}, // 山西的经纬度及到过的次数
+								{ name: '辽宁', value: [123.431474, 41.836175, Math.round(Math.random() * 100)] }, // 辽宁的经纬度及到过的次数
+								{ name: '吉林', value: [125.32568, 43.897016, Math.round(Math.random() * 100)] }, // 吉林的经纬度及到过的次数
+								{ name: '黑龙江', value: [126.661669, 45.742347, Math.round(Math.random() * 100)] }, // 黑龙江的经纬度及到过的次数
+								{ name: '江苏', value: [118.767413, 32.041544, Math.round(Math.random() * 100)] }, // 江苏的经纬度及到过的次数
+								{ name: '浙江', value: [120.153576, 30.287459, Math.round(Math.random() * 100)] }, // 浙江的经纬度及到过的次数
+								{ name: '安徽', value: [117.283042, 31.86119, Math.round(Math.random() * 100)] }, // 安徽的经纬度及到过的次数
+								{ name: '福建', value: [119.306239, 26.075302, Math.round(Math.random() * 100)] }, // 福建的经纬度及到过的次数
+								{ name: '江西', value: [115.892151, 28.676493, Math.round(Math.random() * 100)] }, // 江西的经纬度及到过的次数
+								{ name: '山东', value: [117.019915, 36.671156, Math.round(Math.random() * 100)] }, // 山东的经纬度及到过的次数
+								{ name: '河南', value: [113.665412, 34.757975, Math.round(Math.random() * 100)] }, // 河南的经纬度及到过的次数
+								{ name: '湖北', value: [114.298572, 30.584355, Math.round(Math.random() * 100)] }, // 湖北的经纬度及到过的次数
+								{ name: '湖南', value: [112.982279, 28.19409, Math.round(Math.random() * 100)] }, // 湖南的经纬度及到过的次数
+								{ name: '广东', value: [113.280637, 23.125178, Math.round(Math.random() * 100)] }, // 广东的经纬度及到过的次数
+								{ name: '海南', value: [110.33119, 20.031971, Math.round(Math.random() * 100)] }, // 海南的经纬度及到过的次数
+								{ name: '四川', value: [104.075809, 30.651239, Math.round(Math.random() * 100)] }, // 四川的经纬度及到过的次数
+								{ name: '贵州', value: [106.70546, 26.600055, Math.round(Math.random() * 100)] }, // 贵州的经纬度及到过的次数
+								{ name: '云南', value: [102.710002, 25.045806, Math.round(Math.random() * 100)] }, // 云南的经纬度及到过的次数
+								{ name: '西藏', value: [91.132212, 29.660361, Math.round(Math.random() * 100)] }, // 西藏的经纬度及到过的次数
+								{ name: '陕西', value: [108.948024, 34.263161, Math.round(Math.random() * 100)] }, // 陕西的经纬度及到过的次数
+								{ name: '甘肃', value: [103.823557, 36.058039, Math.round(Math.random() * 100)] }, // 甘肃的经纬度及到过的次数
+								{ name: '青海', value: [101.778916, 36.623178, Math.round(Math.random() * 100)] }, // 青海的经纬度及到过的次数
+								{ name: '宁夏', value: [106.278179, 38.46637, Math.round(Math.random() * 100)] }, // 宁夏的经纬度及到过的次数
+								{ name: '新疆', value: [87.617733, 43.792818, Math.round(Math.random() * 100)] }, // 新疆的经纬度及到过的次数
+								{ name: '台湾', value: [120.960515, 23.69781, Math.round(Math.random() * 100)] }, // 台湾的经纬度及到过的次数
+								{ name: '香港', value: [114.109497, 22.396428, Math.round(Math.random() * 100)] }, // 香港的经纬度及到过的次数
+								{ name: '澳门', value: [113.543028, 22.186835, Math.round(Math.random() * 100)] }, // 澳门的经纬度及到过的次数
+							],
+							symbolSize: function (val) {
+								return val[2] / 10; // 圆点大小与到过的次数相关
+							},
+							label: {
+								formatter: '{b}',
+								position: 'right',
+								show: true,
+							},
+							itemStyle: {
+								color: '#ff0000', // 圆点颜色
+							},
+						},
+					],
+				});
+			}
+		}).mount('#app');
+	</script>
+</body>
+
+</html>

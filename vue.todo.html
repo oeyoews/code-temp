@@ -26,18 +26,40 @@
 				<button @click="removeTodo(index)">删除</button>
 			</li>
 		</ul>
+		<div>
+			{{ data }}
+			<button @click="pop">pop</button>
+			<button @click="reverse">reverse</button>
+		</div>
+
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.0/dist/vue.global.prod.js"></script>
 	<script>
+		const { ref } = Vue
 		const app = Vue.createApp({
-			data() {
+			setup() {
+
+				const data = ref()
+				const newTodo = Vue.ref('');
+				const todos = Vue.ref([]);
+
 				return {
-					newTodo: '',
-					todos: []
+					newTodo,
+					data,
+					todos
 				};
 			},
+			mounted() {
+				this.data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+			},
 			methods: {
+				reverse() {
+					this.data.reverse()
+				},
+				pop() {
+					this.data.pop()
+				},
 				addTodo() {
 					if (this.newTodo.trim() !== '') {
 						this.todos.push({
