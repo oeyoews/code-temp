@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Typewriter Effect</title>
+	<style>
+		#typewriter {
+			font-family: 'Courier New', Courier, monospace;
+			white-space: nowrap;
+			overflow: hidden;
+			width: 100%;
+		}
+
+		.typewriter-text {
+			display: inline-block;
+			animation: typing 3s steps(22), blink-caret 0.5s step-end infinite;
+		}
+
+		@keyframes typing {
+			from {
+				width: 0;
+			}
+
+			to {
+				width: 100%;
+			}
+		}
+
+		@keyframes blink-caret {
+
+			from,
+			to {
+				border-color: transparent;
+			}
+
+			50% {
+				border-color: black;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div id="typewriter" class="typewriter-text">
+			{{ message }}
+		</div>
+	</div>
+
+	<!-- 引入 Vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.prod.js"></script>
+	<script>
+
+		const app = Vue.createApp({
+			setup() {
+				const message = Vue.ref('Hello, world!')
+				const newmes = Vue.ref('')
+				return {
+					message, newmes
+				}
+
+			},
+			mounted() {
+				// 当组件挂载后，开始打字动画
+				this.typeWriterEffect();
+			},
+			methods: {
+				typeWriterEffect() {
+					let index = 0;
+					const intervalId = setInterval(() => {
+						const length = this.message.length
+						if (index < length) {
+							this.newmes = this.message.substring(0, index + 1);
+							index++;
+						} else {
+							clearInterval(intervalId);
+						}
+					}, 200); // 控制打字速度
+				}
+			}
+		});
+		app.mount("#app")
+	</script>
+</body>
+
+</html>

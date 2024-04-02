@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: greenyellow;
+			margin: 4px;
+			border-radius: 4px;
+		}
+
+		.vertical-line {
+			width: 0.5px;
+			height: 50px;
+			background-color: red;
+			rotate: 90deg;
+		}
+
+		.horizontal-line {
+			width: 0.5px;
+			height: 50px;
+			background-color: green;
+		}
+
+		@keyframes breathe-opacity {
+			0% {
+				opacity: 1;
+				scale: 0.3;
+			}
+
+			25% {
+				opacity: 0.25;
+			}
+
+			50% {
+				opacity: 0.5;
+				scale: 0.8;
+			}
+
+			75% {
+				opacity: 0.75;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.breathing-opacity-element {
+			animation: breathe-opacity 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			border-radius: 50%;
+		}
+
+		.card {
+			width: 200px;
+			height: 200px;
+			background-color: aqua;
+			margin: 4px;
+			padding: 4px;
+			border-radius: 8px;
+		}
+
+		.card:hover {
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+		}
+	</style>
+</head>
+
+<body>
+	<!--
+	<h2>flexbox 居中布局</h2>
+	<li>创建一个包含多元素的容器，确保这些元素水平垂直居中</li>
+	-->
+	<div class="container">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+
+	<!-- 0.5px lines -->
+	<div class="vertical-line"></div>
+	<div class="horizontal-line"></div>
+
+	<div class="breathing-opacity-element"></div>
+
+	<div class="card"></div>
+
+</body>
+
+</html>

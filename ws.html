@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WebSocket 客户端示例</title>
+</head>
+
+<body>
+	<h1>WebSocket 客户端示例</h1>
+	<div id="messages"></div>
+	<input type="text" id="messageInput" placeholder="输入消息">
+	<button onclick="sendMessage()">发送消息</button>
+
+	<script>
+		const ws = new WebSocket('ws://localhost:8001');
+
+		ws.onopen = function () {
+			console.log('连接已建立');
+		};
+
+		ws.onmessage = function (event) {
+			console.log('收到消息：', event.data);
+
+			displayMessage(event.data);
+		};
+
+		function sendMessage() {
+			const messageInput = document.getElementById('messageInput');
+			const message = messageInput.value;
+			ws.send(message);
+			messageInput.value = '';
+		}
+
+		function displayMessage(message) {
+			const messagesDiv = document.getElementById('messages');
+			const messageElement = document.createElement('div');
+			messageElement.textContent = message;
+			messagesDiv.appendChild(messageElement);
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<html>
+
+<body>
+	<!-- ... Your HTML and CSS -->
+
+	<div id="app">
+	</div>
+
+	<script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+	<script type="module">
+		import { GoogleGenerativeAI } from "@google/generative-ai";
+
+		// Fetch your API_KEY
+		const API_KEY = "-Y4"
+
+		// Access your API key (see "Set up your API key" above)
+
+		async function run() {
+			// For text-only input, use the gemini-pro model
+			const genAI = new GoogleGenerativeAI(API_KEY);
+			const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+
+			const chat = model.startChat({
+				history: [
+					// {
+					// 	role: 'user',
+					// 	parts: [{ text: 'Hello, I have 2 dogs in my house.' }],
+					// },
+					// {
+					// 	role: 'model',
+					// 	parts: [{ text: 'Great to meet you. What would you like to know?' }],
+					// },
+				],
+				generationConfig: {
+					maxOutputTokens: 100,
+				},
+			});
+
+			const msg = 'who you are, write tiddlywiki';
+
+			const result = await chat.sendMessage(msg);
+			const response = await result.response;
+			const text = response.text();
+			console.log(msg, text)
+			document.getElementById('app').innerHTML = text;
+		}
+
+		run();
+
+		// ...
+	</script>
+</body>
+
+</html>
