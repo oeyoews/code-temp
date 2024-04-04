@@ -1,4 +1,4 @@
-const APIKEY = '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';
+const APIKEY = '';
 
 const requestOptions = {
   method: 'POST',
