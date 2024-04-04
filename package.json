@@ -19,6 +19,7 @@
     "@codemirror/search": "github:codemirror/search",
     "@codemirror/state": "github:codemirror/state",
     "@codemirror/view": "github:codemirror/view",
+    "@editorjs/editorjs": "^2.29.1",
     "@google/generative-ai": "^0.3.1",
     "@kreisler/js-google-translate-free": "^2.1.0",
     "axios": "^1.6.5",
@@ -44,6 +45,8 @@
     "spark-nodejs": "^0.0.6",
     "tldraw": "^2.0.0",
     "translate": "^2.0.2",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.3",
     "uuid": "^9.0.1",
     "ws": "^8.16.0"
   },

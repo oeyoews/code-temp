@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.bg {
+			position: fixed;
+			inset: 0;
+			z-index: -50;
+			background-image: linear-gradient(to right, #8080800a 1px, transparent 1px), linear-gradient(to bottom, #8080800a 1px, transparent 1px);
+			background-size: 14px 24px;
+		}
+
+		.absolute {
+			position: absolute;
+			inset: 0;
+			z-index: -10;
+			margin: auto;
+			width: 310px;
+			height: 310px;
+			border-radius: 50%;
+			background-color: fuchsia;
+			opacity: 0.20;
+			filter: blur(100px);
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="bg">
+		<!-- <div class="absolute"></div> -->
+	</div>
+</body>
+
+</html>
