@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 递增计数器</title>
+  <!-- 加载 Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>当前数字：{{ count }}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          count: 0,
+          duration: 2000, // 默认持续时间 2000 毫秒
+          interval: 20, // 计算出的递增间隔时间
+        };
+      },
+      mounted() {
+        this.incrementCount(100); // 默认结束值 100
+      },
+      methods: {
+        incrementCount(endValue) {
+          const startTime = Date.now();
+          const endTime = startTime + this.duration;
+          const updateCount = () => {
+            const now = Date.now();
+            const progress = now - startTime;
+            // 根据进度 bili 计算出当前数值
+            this.count = Math.floor(progress / this.duration * endValue);
+            if (now < endTime) {
+              setTimeout(updateCount, this.interval);
+            } else {
+              this.count = endValue; // 确保最终显示结束值
+            }
+          };
+          updateCount();
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

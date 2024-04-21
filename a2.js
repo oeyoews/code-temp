@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-
 const characters = Array.from({ length: 62 }, (_, i) =>
   i < 26
     ? String.fromCharCode(i + 65)

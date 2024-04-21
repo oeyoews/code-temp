@@ -29,6 +29,9 @@ dependencies:
   '@kreisler/js-google-translate-free':
     specifier: ^2.1.0
     version: 2.1.0
+  '@notionhq/client':
+    specifier: ^2.2.14
+    version: 2.2.14
   axios:
     specifier: ^1.6.5
     version: 1.6.5
@@ -524,6 +527,16 @@ packages:
     resolution: {integrity: sha512-z5mY4LStlA3yL7aHT/rqgG614cfcvklS+8oFRFBYrs4YaWLJyKKM4+nN6KopToX0o9Hj6zmH6M5kinOYuy06ug==}
     dependencies:
       '@lezer/common': 1.2.0
+    dev: false
+
+  /@notionhq/client@2.2.14:
+    resolution: {integrity: sha512-oqUefZtCiJPCX+74A1Os9OVTef3fSnVWe2eVQtU1HJSD+nsfxfhwvDKnzJTh2Tw1ZHKLxpieHB/nzGdY+Uo12A==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@types/node-fetch': 2.6.11
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@radix-ui/number@1.0.1:

@@ -23,12 +23,13 @@ enum Permission {
   Write = 1,
   Read = 1 << 1,
   Delete = 1 << 2,
-  None = 1 << 3,
+  Manage = 1 << 3,
 }
 
 const user = {
-  permission: 0b0010,
+  permission: 0b0101,
 };
-if (user.permission & Permission.Read) {
+
+if ((user.permission & Permission.Delete) === Permission.Delete) {
   console.log('write');
 }
